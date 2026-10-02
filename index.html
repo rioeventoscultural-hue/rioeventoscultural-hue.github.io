@@ -2,49 +2,54 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Maia Baba Pet</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Nunito',sans-serif}
-body{background:#2aa99e;padding:12px}
-.container{max-width:420px;margin:0 auto}
-.header{background:#fff;border-radius:24px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
-.title{color:#fff;font-size:30px;font-weight:900;margin:22px 4px 12px}
-.card{background:#fff;border-radius:22px;padding:14px;display:flex;align-items:center;gap:14px;margin-bottom:14px;border:3px solid transparent}
-.card.active{border-color:#fff;transform:scale(1.02)}
-.avatar{width:82px;height:82px;border-radius:50%;object-fit:cover}
-.pet-name{font-size:26px;font-weight:900;color:#0d3c44}
-.btn{background:#fff;border-radius:18px;padding:12px 6px;text-align:center;border:none;width:100%}
-.actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+body{background:#2AA99E;min-height:100vh}
+.bg{position:fixed;inset:0;background:#2AA99E url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><text x="20" y="60" font-size="60" opacity="0.12">🐾</text></svg>');opacity:1}
+.wrap{max-width:430px;margin:0 auto;padding:14px;position:relative;z-index:2}
+.top{background:#fff;border-radius:26px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+.logo{display:flex;align-items:center;gap:12px}
+.paw{width:62px;height:62px;border-radius:18px;background:#5E2B97;display:grid;place-items:center;color:white;font-size:34px}
+.brand b{font-size:32px;color:#5E2B97;display:block;line-height:.9}
+.brand span{font-size:13px;letter-spacing:2px;color:#555;font-weight:800}
+.tit{color:#fff;font-size:34px;font-weight:900;margin:24px 6px 14px}
+.card{background:#fff;border-radius:22px;padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:14px;cursor:pointer;border:3px solid transparent;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.card.on{border-color:#fff;transform:scale(1.02)}
+.pic{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.name{font-size:26px;font-weight:900;color:#0B3D43}
+.info{font-size:14px;color:#666}
+.tag{background:#D8F5E5;color:#0A8A4B;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:900;margin-left:6px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.b{background:#fff;border:none;border-radius:20px;padding:16px 6px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.b span{font-size:32px}
+.b p{font-size:13px;font-weight:900;color:#0B3D43;margin-top:6px;line-height:1.1}
 </style>
 </head>
 <body>
-<div class="container">
-<div class="header"><b style="font-size:28px;color:#4a1a8a">🐾 Maia BABÁ PET</b></div>
-<div class="title">Meus Pets</div>
-<div class="card active" id="card-thor" onclick="selectPet('thor')">
-<img class="avatar" src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=200">
-<div><div class="pet-name">Thor</div>Golden • 4 anos <span style="background:#d6f5e3;color:#1a8a5a;padding:3px 8px;border-radius:12px;font-size:12px">Ativo ●</span></div>
-</div>
-<div class="card" id="card-luna" onclick="selectPet('luna')">
-<img class="avatar" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=200">
-<div><div class="pet-name">Luna</div>SRD • 2 anos <span style="background:#d6f5e3;color:#1a8a5a;padding:3px 8px;border-radius:12px;font-size:12px">Ativo ●</span></div>
-</div>
-<div class="title">Ações Rápidas</div>
-<div class="actions">
-<button class="btn" onclick="aoVivo()"><div>📺</div><b>Ao Vivo<br>TV Câmera</b></button>
-<button class="btn" onclick="copiarLink()"><div>💬</div><b>Mensagem</b></button>
-<button class="btn" onclick="falarMaia()"><div>🎧</div><b>Falar com Maia</b></button>
+<div class="wrap">
+<div class="top"><div class="logo"><div class="paw">🐾</div><div class="brand"><b>Maia</b><span>BABÁ PET</span></div></div><div style="font-size:24px">⋮</div></div>
+
+<div class="tit">Meus Pets</div>
+<div class="card on" id="c-thor" onclick="sel('thor')"><img class="pic" src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=300"><div><div class="name">Thor</div><div class="info">Golden • 4 anos <span class="tag">Ativo ●</span></div></div></div>
+<div class="card" id="c-luna" onclick="sel('luna')"><img class="pic" src="https://images.unsplash.com/photo-1583512603807-3cc6b8da5029?w=300"><div><div class="name">Luna</div><div class="info">SRD • 2 anos <span class="tag">Ativo ●</span></div></div></div>
+
+<div class="tit">Ações Rápidas</div>
+<div class="grid">
+<button class="b" onclick="live()"><span>📺</span><p>Ao Vivo TV Câmera</p></button>
+<button class="b" onclick="copy()"><span>💬</span><p>Mensagem</p></button>
+<button class="b" onclick="zap()"><span>🎧</span><p>Falar com Maia</p></button>
 </div>
 </div>
 <script>
-let petAtivo='thor';
-function selectPet(p){petAtivo=p;document.getElementById('card-thor').classList.remove('active');document.getElementById('card-luna').classList.remove('active');document.getElementById('card-'+p).classList.add('active')}
-function getLink(){return location.href.split('?')[0]+'?tutor=maia-'+Math.random().toString(36).substring(2,6)+'&pet='+petAtivo}
-function aoVivo(){window.open(getLink(),'_blank')}
-function copiarLink(){navigator.clipboard.writeText(getLink());alert('Link privado copiado!')}
-function falarMaia(){window.open('https://wa.me/5517991496656?text=Ola Maia sobre '+petAtivo,'_blank')}
+let pet='thor';
+function sel(p){pet=p;document.getElementById('c-thor').classList.remove('on');document.getElementById('c-luna').classList.remove('on');document.getElementById('c-'+p).classList.add('on')}
+function mkLink(){return location.origin+location.pathname+'?tutor=maia-'+Math.random().toString(36).slice(2,6)+'&pet='+pet}
+function live(){window.open(mkLink(),'_blank')}
+function copy(){navigator.clipboard.writeText(mkLink());alert('Link copiado!')}
+function zap(){window.open('https://wa.me/5517991496656?text=Ola Maia sobre '+pet,'_blank')}
 </script>
 </body>
 </html>
