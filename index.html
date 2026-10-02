@@ -2,54 +2,41 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maia Baba Pet</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Nunito',sans-serif}
-body{background:#2AA99E;min-height:100vh}
-.bg{position:fixed;inset:0;background:#2AA99E url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><text x="20" y="60" font-size="60" opacity="0.12">🐾</text></svg>');opacity:1}
-.wrap{max-width:430px;margin:0 auto;padding:14px;position:relative;z-index:2}
-.top{background:#fff;border-radius:26px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 25px rgba(0,0,0,.15)}
-.logo{display:flex;align-items:center;gap:12px}
-.paw{width:62px;height:62px;border-radius:18px;background:#5E2B97;display:grid;place-items:center;color:white;font-size:34px}
-.brand b{font-size:32px;color:#5E2B97;display:block;line-height:.9}
-.brand span{font-size:13px;letter-spacing:2px;color:#555;font-weight:800}
-.tit{color:#fff;font-size:34px;font-weight:900;margin:24px 6px 14px}
-.card{background:#fff;border-radius:22px;padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:14px;cursor:pointer;border:3px solid transparent;box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.card.on{border-color:#fff;transform:scale(1.02)}
-.pic{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
-.name{font-size:26px;font-weight:900;color:#0B3D43}
-.info{font-size:14px;color:#666}
-.tag{background:#D8F5E5;color:#0A8A4B;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:900;margin-left:6px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#2FB1A6;padding:12px}
+.box{max-width:420px;margin:0 auto}
+.top{background:#fff;border-radius:24px;padding:14px;display:flex;align-items:center;gap:10px}
+.top b{color:#5E2B97;font-size:26px}
+h2{color:#fff;font-size:32px;margin:20px 6px 12px}
+.card{background:#fff;border-radius:20px;padding:14px;display:flex;gap:12px;margin-bottom:12px}
+.card img{width:75px;height:75px;border-radius:50%}
+.tag{background:#d4f5e2;color:#0a8a4b;padding:2px 8px;border-radius:12px;font-size:12px}
 .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.b{background:#fff;border:none;border-radius:20px;padding:16px 6px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.b span{font-size:32px}
-.b p{font-size:13px;font-weight:900;color:#0B3D43;margin-top:6px;line-height:1.1}
+.btn{background:#fff;border:0;border-radius:18px;padding:14px 5px;font-weight:900;color:#0c3d44}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="top"><div class="logo"><div class="paw">🐾</div><div class="brand"><b>Maia</b><span>BABÁ PET</span></div></div><div style="font-size:24px">⋮</div></div>
-
-<div class="tit">Meus Pets</div>
-<div class="card on" id="c-thor" onclick="sel('thor')"><img class="pic" src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=300"><div><div class="name">Thor</div><div class="info">Golden • 4 anos <span class="tag">Ativo ●</span></div></div></div>
-<div class="card" id="c-luna" onclick="sel('luna')"><img class="pic" src="https://images.unsplash.com/photo-1583512603807-3cc6b8da5029?w=300"><div><div class="name">Luna</div><div class="info">SRD • 2 anos <span class="tag">Ativo ●</span></div></div></div>
-
-<div class="tit">Ações Rápidas</div>
+<div class="box">
+<div class="top">🐾 <b>Maia BABÁ PET</b></div>
+<h2>Meus Pets</h2>
+<div class="card" onclick="pet='thor'" id="t"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=200"><div><b>Thor</b><br>Golden • 4 anos <span class="tag">Ativo ●</span></div></div>
+<div class="card" onclick="pet='luna'" id="l"><img src="https://images.unsplash.com/photo-1583512603807-3cc6b8da5029?w=200"><div><b>Luna</b><br>SRD • 2 anos <span class="tag">Ativo ●</span></div></div>
+<h2>Ações Rápidas</h2>
 <div class="grid">
-<button class="b" onclick="live()"><span>📺</span><p>Ao Vivo TV Câmera</p></button>
-<button class="b" onclick="copy()"><span>💬</span><p>Mensagem</p></button>
-<button class="b" onclick="zap()"><span>🎧</span><p>Falar com Maia</p></button>
+<button class="btn" onclick="aoVivo()">📺<br>Ao Vivo TV Câmera</button>
+<button class="btn" onclick="copiar()">💬<br>Mensagem</button>
+<button class="btn" onclick="zap()">🎧<br>Falar com Maia</button>
 </div>
 </div>
 <script>
 let pet='thor';
-function sel(p){pet=p;document.getElementById('c-thor').classList.remove('on');document.getElementById('c-luna').classList.remove('on');document.getElementById('c-'+p).classList.add('on')}
-function mkLink(){return location.origin+location.pathname+'?tutor=maia-'+Math.random().toString(36).slice(2,6)+'&pet='+pet}
-function live(){window.open(mkLink(),'_blank')}
-function copy(){navigator.clipboard.writeText(mkLink());alert('Link copiado!')}
-function zap(){window.open('https://wa.me/5517991496656?text=Ola Maia sobre '+pet,'_blank')}
+function link(){return location.href.split('?')[0]+'?tutor=maia-'+Math.random().toString(36).slice(2,5)+'&pet='+pet}
+function aoVivo(){window.open(link(),'_blank')}
+function copiar(){navigator.clipboard.writeText(link());alert('Link copiado!')}
+function zap(){window.open('https://wa.me/5517991496656?text=Olá Maia sobre '+pet,'_blank')}
 </script>
 </body>
 </html>
